@@ -29,37 +29,35 @@
 		</div>
 
 		{#if hasAnyResults($results)}
-			<Card>
-				<Table striped>
-					<TableHead>
-						<TableHeadCell>Test</TableHeadCell>
-						<TableHeadCell>Correct</TableHeadCell>
-						<TableHeadCell>Total</TableHeadCell>
-						<TableHeadCell>Accuracy</TableHeadCell>
-						<TableHeadCell>Speed</TableHeadCell>
-						<TableHeadCell>Date</TableHeadCell>
-					</TableHead>
-					<TableBody>
-						{#each Object.entries($results) as [key, result]}
-							{#if result}
-								<TableBodyRow>
-									<TableBodyCell>{testNames[key]}</TableBodyCell>
-									<TableBodyCell>{result.correct}</TableBodyCell>
-									<TableBodyCell>{result.total}</TableBodyCell>
-									<TableBodyCell>{result.accuracy.toFixed(1)}%</TableBodyCell>
-									<TableBodyCell>{result.speed.toFixed(1)}/min</TableBodyCell>
-									<TableBodyCell class="text-sm">{formatDate(result.timestamp)}</TableBodyCell>
-								</TableBodyRow>
-							{/if}
-						{/each}
-					</TableBody>
-				</Table>
-			</Card>
+			<Table striped shadow class="w-full">
+				<TableHead>
+					<TableHeadCell>Test</TableHeadCell>
+					<TableHeadCell>Correct</TableHeadCell>
+					<TableHeadCell>Total</TableHeadCell>
+					<TableHeadCell>Accuracy</TableHeadCell>
+					<TableHeadCell>Speed</TableHeadCell>
+					<TableHeadCell>Date</TableHeadCell>
+				</TableHead>
+				<TableBody>
+					{#each Object.entries($results) as [key, result]}
+						{#if result}
+							<TableBodyRow>
+								<TableBodyCell>{testNames[key]}</TableBodyCell>
+								<TableBodyCell>{result.correct}</TableBodyCell>
+								<TableBodyCell>{result.total}</TableBodyCell>
+								<TableBodyCell>{result.accuracy.toFixed(1)}%</TableBodyCell>
+								<TableBodyCell>{result.speed.toFixed(1)}/min</TableBodyCell>
+								<TableBodyCell class="text-sm">{formatDate(result.timestamp)}</TableBodyCell>
+							</TableBodyRow>
+						{/if}
+					{/each}
+				</TableBody>
+			</Table>
 		{:else}
-			<Card class="text-center">
-				<p class="text-gray-500 py-8">No test results yet. Complete a test to see your results here.</p>
+			<div class="text-center py-12">
+				<p class="text-gray-500 mb-6">No test results yet. Complete a test to see your results here.</p>
 				<Button href="/reasoning">Start Reasoning Test</Button>
-			</Card>
+			</div>
 		{/if}
 
 		<div class="mt-6">

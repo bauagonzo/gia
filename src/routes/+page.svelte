@@ -22,7 +22,7 @@
             <NavLi href="/perceptual">Perceptual</NavLi>
             <NavLi href="/number">Number</NavLi>
             <NavLi href="/word">Word</NavLi>
-            <NavLi href="#">Spatial</NavLi>
+            <NavLi href="/spatial">Spatial</NavLi>
         </NavUl>
     </div>
 <Label>
