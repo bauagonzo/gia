@@ -1,0 +1,71 @@
+version: '3'
+
+vars:
+  IMAGE: ghcr.io/bauagonzo/gia
+  TAG: '{{default "latest" .TAG}}'
+
+tasks:
+  default:
+    desc: List available tasks
+    cmds:
+      - task --list
+
+  install:
+    desc: Install dependencies
+    cmds:
+      - pnpm install
+
+  dev:
+    desc: Start development server
+    cmds:
+      - pnpm run dev
+
+  build:
+    desc: Build for production (pnpm)
+    cmds:
+      - pnpm run build
+
+  check:
+    desc: Run type checking
+    cmds:
+      - pnpm run check
+
+  preview:
+    desc: Preview production build
+    deps: [build]
+    cmds:
+      - pnpm run preview
+
+  docker:build:
+    desc: Build Docker image
+    cmds:
+      - docker build -t {{.IMAGE}}:{{.TAG}} .
+
+  docker:run:
+    desc: Run Docker container locally
+    deps: [docker:build]
+    cmds:
+      - docker run --rm -p 8080:80 {{.IMAGE}}:{{.TAG}}
+
+  docker:push:
+    desc: Push Docker image to ghcr.io
+    deps: [docker:build]
+    cmds:
+      - docker push {{.IMAGE}}:{{.TAG}}
+
+  docker:login:
+    desc: Login to ghcr.io (requires GITHUB_TOKEN env var)
+    cmds:
+      - echo $GITHUB_TOKEN | docker login ghcr.io -u bauagonzo --password-stdin
+
+  release:
+    desc: Build and push Docker image with a specific tag
+    cmds:
+      - task: docker:build
+        vars: {TAG: '{{.TAG}}'}
+      - task: docker:push
+        vars: {TAG: '{{.TAG}}'}
+      - task: docker:build
+        vars: {TAG: 'latest'}
+      - task: docker:push
+        vars: {TAG: 'latest'}
