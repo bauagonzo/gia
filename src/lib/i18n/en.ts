@@ -1,7 +1,8 @@
 export default {
 	home: {
-		welcome: 'Welcome to GIA Test Practice',
-		selectTest: 'Select a test from the navigation to begin'
+		welcome: 'Welcome to {gia} Test Practice',
+		giaLink: 'https://www.thomas.co/assessments/general-intelligence-assessment-gia',
+		giaLabel: 'GIA'
 	},
 	nav: {
 		results: 'Results',

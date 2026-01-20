@@ -2,7 +2,7 @@
 	import { Navbar, NavBrand, NavLi, NavUl, Button } from 'flowbite-svelte';
 	import { Select, Label } from 'flowbite-svelte';
 	import { BrainSolid } from 'flowbite-svelte-icons';
-	import { locale, t, type Locale } from '$lib/i18n';
+	import { locale, t, currentTranslations, type Locale } from '$lib/i18n';
 	import ReasoningTest from '$lib/components/tests/ReasoningTest.svelte';
 	import PerceptualTest from '$lib/components/tests/PerceptualTest.svelte';
 	import NumberTest from '$lib/components/tests/NumberTest.svelte';
@@ -70,8 +70,11 @@
 			{:else if activeTest === 'results'}
 				<ResultsView onBack={goToMenu} onStartTest={(test) => setActiveTest(test as ActiveView)} />
 			{:else}
+				{@const welcomeParts = $t('home.welcome').split('{gia}')}
 				<div class="text-center py-12">
-					<h1 class="text-3xl font-bold text-gray-800 mb-6">{$t('home.welcome')}</h1>
+					<h1 class="text-3xl font-bold text-gray-800 mb-6">
+						{welcomeParts[0]}<a href={$currentTranslations.home.giaLink} target="_blank" rel="noopener noreferrer" class="text-primary-600 hover:underline">{$currentTranslations.home.giaLabel}</a>{welcomeParts[1] || ''}
+					</h1>
 					<Button onclick={() => setActiveTest('reasoning')}>{$t('resultsPage.startTest')}</Button>
 				</div>
 			{/if}

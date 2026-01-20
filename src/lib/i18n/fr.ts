@@ -1,7 +1,8 @@
 export default {
 	home: {
-		welcome: 'Bienvenue à la Pratique du Test GIA',
-		selectTest: 'Sélectionnez un test dans la navigation pour commencer'
+		welcome: 'Bienvenue à la Pratique du Test {gia}',
+		giaLink: 'https://www.thomas.co/fr/gia',
+		giaLabel: 'GIA'
 	},
 	nav: {
 		results: 'Résultats',
