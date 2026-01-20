@@ -73,10 +73,10 @@ tasks:
   cf:login:
     desc: Login to Cloudflare
     cmds:
-      - wrangler login
+      - npx wrangler login
 
   cf:deploy:
     desc: Deploy to Cloudflare Pages
     deps: [build]
     cmds:
-      - wrangler pages deploy
+      - npx wrangler pages deploy
