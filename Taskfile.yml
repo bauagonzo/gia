@@ -69,3 +69,14 @@ tasks:
         vars: {TAG: 'latest'}
       - task: docker:push
         vars: {TAG: 'latest'}
+
+  cf:login:
+    desc: Login to Cloudflare
+    cmds:
+      - wrangler login
+
+  cf:deploy:
+    desc: Deploy to Cloudflare Pages
+    deps: [build]
+    cmds:
+      - wrangler pages deploy

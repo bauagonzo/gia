@@ -71,3 +71,18 @@ task docker:push
 # Release with specific tag
 task release TAG=v1.0.0
 ```
+
+## Cloudflare Pages
+
+Deploy to Cloudflare Pages:
+
+```sh
+# Login to Cloudflare (first time only)
+task cf:login
+
+# Deploy
+task cf:deploy
+
+# Or without Task:
+pnpm run deploy
+```
