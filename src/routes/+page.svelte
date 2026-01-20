@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Navbar, NavBrand, NavLi, NavUl, Button } from 'flowbite-svelte';
 	import { Select, Label } from 'flowbite-svelte';
+	import { BrainSolid } from 'flowbite-svelte-icons';
 	import { locale, t, type Locale } from '$lib/i18n';
 	import ReasoningTest from '$lib/components/tests/ReasoningTest.svelte';
 	import PerceptualTest from '$lib/components/tests/PerceptualTest.svelte';
@@ -34,8 +35,9 @@
 </script>
 
 <Navbar class="bg-white border-b border-gray-200">
-	<NavBrand href="#">
-		<span class="text-xl font-semibold">GIA test</span>
+	<NavBrand href="https://gia.lafabrique.ai" class="flex items-center gap-2">
+		<BrainSolid class="w-8 h-8 text-primary-600" />
+		<span class="text-xl font-semibold">gia.lafabrique.ai</span>
 	</NavBrand>
 	<div class="flex mx-auto space-x-4">
 		<NavUl>
