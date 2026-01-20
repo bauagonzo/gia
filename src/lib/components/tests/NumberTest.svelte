@@ -4,8 +4,15 @@
 	import { generateQuestion, type NumberQuestion } from '$lib/number';
 	import { results } from '$lib/stores/results';
 	import { t } from '$lib/i18n';
+	import { TEST_DURATIONS } from '$lib/config';
 
-	const DURATION = 120; // 2 minutes
+	interface Props {
+		onBack: () => void;
+	}
+
+	let { onBack }: Props = $props();
+
+	const DURATION = TEST_DURATIONS.number;
 
 	let currentQuestion = $state<NumberQuestion>(generateQuestion());
 	let score = $state(0);
@@ -73,6 +80,7 @@
 		</div>
 		<div class="mt-6 mb-2 flex gap-4 justify-center">
 			<Button onclick={retry}>{$t('common.tryAgain')}</Button>
+			<Button onclick={onBack} color="alternative">{$t('common.backToMenu')}</Button>
 		</div>
 	</Card>
 {:else}

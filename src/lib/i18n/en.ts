@@ -1,4 +1,8 @@
 export default {
+	home: {
+		welcome: 'Welcome to GIA Test Practice',
+		selectTest: 'Select a test from the navigation to begin'
+	},
 	nav: {
 		results: 'Results',
 		reasoning: 'Reasoning',

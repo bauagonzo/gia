@@ -4,8 +4,15 @@
 	import { generateQuestion, type WordQuestion } from '$lib/word';
 	import { results } from '$lib/stores/results';
 	import { t, currentTranslations } from '$lib/i18n';
+	import { TEST_DURATIONS } from '$lib/config';
 
-	const DURATION = 240; // 4 minutes
+	interface Props {
+		onBack: () => void;
+	}
+
+	let { onBack }: Props = $props();
+
+	const DURATION = TEST_DURATIONS.word;
 
 	function getSemanticGroups(): string[][] {
 		return $currentTranslations.word.semanticGroups as string[][];
@@ -77,6 +84,7 @@
 		</div>
 		<div class="mt-6 mb-2 flex gap-4 justify-center">
 			<Button onclick={retry}>{$t('common.tryAgain')}</Button>
+			<Button onclick={onBack} color="alternative">{$t('common.backToMenu')}</Button>
 		</div>
 	</Card>
 {:else}
