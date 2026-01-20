@@ -17,9 +17,9 @@
     <!-- Centered links -->
     <div class="flex mx-auto space-x-4">
         <NavUl>
-            <NavLi href="#">Results</NavLi>
-            <NavLi href="#">Reasoning</NavLi>
-            <NavLi href="#">Perceptual</NavLi>
+            <NavLi href="/results">Results</NavLi>
+            <NavLi href="/reasoning">Reasoning</NavLi>
+            <NavLi href="/perceptual">Perceptual</NavLi>
             <NavLi href="#">Number</NavLi>
             <NavLi href="#">Word</NavLi>
             <NavLi href="#">Spatial</NavLi>
