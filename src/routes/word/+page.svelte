@@ -3,10 +3,15 @@
 	import Timer from '$lib/components/Timer.svelte';
 	import { generateQuestion, type WordQuestion } from '$lib/word';
 	import { results } from '$lib/stores/results';
+	import { t, currentTranslations } from '$lib/i18n';
 
 	const DURATION = 20; // 4 minutes
 
-	let currentQuestion = $state<WordQuestion>(generateQuestion());
+	function getSemanticGroups(): string[][] {
+		return $currentTranslations.word.semanticGroups as string[][];
+	}
+
+	let currentQuestion = $state<WordQuestion>(generateQuestion(getSemanticGroups()));
 	let score = $state(0);
 	let totalAnswered = $state(0);
 	let timeExpired = $state(false);
@@ -19,7 +24,7 @@
 			score++;
 		}
 		totalAnswered++;
-		currentQuestion = generateQuestion();
+		currentQuestion = generateQuestion(getSemanticGroups());
 	}
 
 	function handleTimeExpire() {
@@ -41,7 +46,7 @@
 		totalAnswered = 0;
 		timeExpired = false;
 		showResults = false;
-		currentQuestion = generateQuestion();
+		currentQuestion = generateQuestion(getSemanticGroups());
 	}
 
 	function getAccuracy(): string {
@@ -57,7 +62,7 @@
 <div class="min-h-screen bg-gray-50 p-4">
 	<div class="max-w-2xl mx-auto">
 		<div class="flex justify-between items-center mb-6">
-			<h1 class="text-2xl font-bold text-gray-800">Word Meaning</h1>
+			<h1 class="text-2xl font-bold text-gray-800">{$t('word.title')}</h1>
 			{#if !showResults}
 				<Timer duration={DURATION} onExpire={handleTimeExpire} />
 			{/if}
@@ -65,22 +70,22 @@
 
 		{#if showResults}
 			<Card class="text-center">
-				<h2 class="text-xl font-semibold mb-4">Results</h2>
+				<h2 class="text-xl font-semibold mb-4">{$t('common.results')}</h2>
 				<div class="space-y-3 text-lg">
-					<p><span class="font-medium">Correct Answers:</span> {score}</p>
-					<p><span class="font-medium">Total Attempted:</span> {totalAnswered}</p>
-					<p><span class="font-medium">Accuracy:</span> {getAccuracy()}%</p>
-					<p><span class="font-medium">Speed:</span> {getSpeed()} questions/min</p>
+					<p><span class="font-medium">{$t('common.correctAnswers')}:</span> {score}</p>
+					<p><span class="font-medium">{$t('common.totalAttempted')}:</span> {totalAnswered}</p>
+					<p><span class="font-medium">{$t('common.accuracy')}:</span> {getAccuracy()}%</p>
+					<p><span class="font-medium">{$t('common.speed')}:</span> {getSpeed()} {$t('common.questionsPerMin')}</p>
 				</div>
 				<div class="mt-6 mb-2 flex gap-4 justify-center">
-					<Button onclick={retry}>Try Again</Button>
-					<Button href="/" color="alternative">Back to Menu</Button>
+					<Button onclick={retry}>{$t('common.tryAgain')}</Button>
+					<Button href="/" color="alternative">{$t('common.backToMenu')}</Button>
 				</div>
 			</Card>
 		{:else}
 			<Card>
 				<div class="text-center space-y-6 min-h-32 pb-4">
-					<p class="text-gray-600 mb-4">Which word is the odd one out?</p>
+					<p class="text-gray-600 mb-4">{$t('word.question')}</p>
 					<div class="flex justify-center gap-4">
 						{#each currentQuestion.words as word}
 							<Button

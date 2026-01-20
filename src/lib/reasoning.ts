@@ -1,21 +1,3 @@
-// Adjective pairs: [comparative, opposite adjective]
-const adjectivePairs: [string, string, string][] = [
-	['heavier', 'lighter', 'heavy'],
-	['lighter', 'heavier', 'light'],
-	['taller', 'shorter', 'tall'],
-	['shorter', 'taller', 'short'],
-	['older', 'younger', 'old'],
-	['younger', 'older', 'young'],
-	['faster', 'slower', 'fast'],
-	['slower', 'faster', 'slow'],
-	['stronger', 'weaker', 'strong'],
-	['weaker', 'stronger', 'weak'],
-	['smarter', 'duller', 'smart'],
-	['duller', 'smarter', 'dull'],
-	['richer', 'poorer', 'rich'],
-	['poorer', 'richer', 'poor']
-];
-
 const names = [
 	'Alice', 'Bob', 'Carol', 'David', 'Emma', 'Frank', 'Grace', 'Henry',
 	'Ivy', 'Jack', 'Kate', 'Leo', 'Maya', 'Noah', 'Olivia', 'Paul',
@@ -43,9 +25,16 @@ export interface ReasoningQuestion {
 	correctAnswer: string;
 }
 
-export function generateQuestion(): ReasoningQuestion {
+export interface ReasoningTranslations {
+	adjectivePairs: [string, string, string][];
+	comparativeThan: string;
+	notAsAdjective: string;
+	whoIs: string;
+}
+
+export function generateQuestion(translations: ReasoningTranslations): ReasoningQuestion {
 	const [name1, name2] = pickTwoNames();
-	const [comparative, opposite, adjective] = pickRandom(adjectivePairs);
+	const [comparative, opposite, adjective] = pickRandom(translations.adjectivePairs);
 
 	// Randomly choose statement type
 	const useNegative = Math.random() < 0.5;
@@ -55,15 +44,21 @@ export function generateQuestion(): ReasoningQuestion {
 
 	if (useNegative) {
 		// "X is not as [adjective] as Y" -> Y has more of trait -> X has opposite
-		statement = `${name1} is not as ${adjective} as ${name2}`;
+		statement = translations.notAsAdjective
+			.replace('{name1}', name1)
+			.replace('{name2}', name2)
+			.replace('{adjective}', adjective);
 		correctAnswer = name1;
 	} else {
 		// "X is [comparative] than Y" -> X has more of trait -> Y has opposite
-		statement = `${name1} is ${comparative} than ${name2}`;
+		statement = translations.comparativeThan
+			.replace('{name1}', name1)
+			.replace('{name2}', name2)
+			.replace('{comparative}', comparative);
 		correctAnswer = name2;
 	}
 
-	const question = `Who is ${opposite}?`;
+	const question = `${translations.whoIs} ${opposite}?`;
 
 	return {
 		statement,
