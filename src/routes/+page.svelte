@@ -21,7 +21,7 @@
             <NavLi href="/reasoning">Reasoning</NavLi>
             <NavLi href="/perceptual">Perceptual</NavLi>
             <NavLi href="/number">Number</NavLi>
-            <NavLi href="#">Word</NavLi>
+            <NavLi href="/word">Word</NavLi>
             <NavLi href="#">Spatial</NavLi>
         </NavUl>
     </div>
