@@ -3,12 +3,15 @@
 	import { Select, Label } from 'flowbite-svelte';
 	import { BrainSolid } from 'flowbite-svelte-icons';
 	import { locale, t, currentTranslations, type Locale } from '$lib/i18n';
+	import { TEST_DURATIONS } from '$lib/config';
 	import ReasoningTest from '$lib/components/tests/ReasoningTest.svelte';
 	import PerceptualTest from '$lib/components/tests/PerceptualTest.svelte';
 	import NumberTest from '$lib/components/tests/NumberTest.svelte';
 	import WordTest from '$lib/components/tests/WordTest.svelte';
 	import SpatialTest from '$lib/components/tests/SpatialTest.svelte';
 	import ResultsView from '$lib/components/tests/ResultsView.svelte';
+
+	const testKeys = ['reasoning', 'perceptual', 'number', 'word', 'spatial'] as const;
 
 	type ActiveView = 'menu' | 'reasoning' | 'perceptual' | 'number' | 'word' | 'spatial' | 'results';
 
@@ -75,6 +78,20 @@
 					<h1 class="text-3xl font-bold text-gray-800 mb-6">
 						{welcomeParts[0]}<a href={$currentTranslations.home.giaLink} target="_blank" rel="noopener noreferrer" class="text-primary-600 hover:underline">{$currentTranslations.home.giaLabel}</a>{welcomeParts[1] || ''}
 					</h1>
+
+					<p class="text-gray-600 mb-4">{$t('home.description')}</p>
+
+					<ul class="text-left inline-block mb-6">
+						{#each testKeys as key}
+							<li class="text-gray-700 py-1">
+								<span class="font-medium">{$currentTranslations.resultsPage.testNames[key]}</span>
+								<span class="text-gray-500 ml-2">({Math.floor(TEST_DURATIONS[key] / 60)} {$t('home.minute')})</span>
+							</li>
+						{/each}
+					</ul>
+
+					<p class="text-gray-600 mb-8 max-w-lg mx-auto">{$t('home.encouragement')}</p>
+
 					<Button onclick={() => setActiveTest('reasoning')}>{$t('resultsPage.startTest')}</Button>
 				</div>
 			{/if}
