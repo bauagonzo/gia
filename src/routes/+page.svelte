@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Navbar, NavBrand, NavLi, NavUl } from 'flowbite-svelte';
+	import { Navbar, NavBrand, NavLi, NavUl, Button } from 'flowbite-svelte';
 	import { Select, Label } from 'flowbite-svelte';
 	import { locale, t, type Locale } from '$lib/i18n';
 	import ReasoningTest from '$lib/components/tests/ReasoningTest.svelte';
@@ -56,21 +56,21 @@
 	<div class={activeTest === 'results' ? 'max-w-6xl mx-auto' : 'max-w-2xl mx-auto'}>
 		{#key activeTest}
 			{#if activeTest === 'reasoning'}
-				<ReasoningTest onBack={goToMenu} />
+				<ReasoningTest onNext={() => setActiveTest('perceptual')} />
 			{:else if activeTest === 'perceptual'}
-				<PerceptualTest onBack={goToMenu} />
+				<PerceptualTest onNext={() => setActiveTest('number')} />
 			{:else if activeTest === 'number'}
-				<NumberTest onBack={goToMenu} />
+				<NumberTest onNext={() => setActiveTest('word')} />
 			{:else if activeTest === 'word'}
-				<WordTest onBack={goToMenu} />
+				<WordTest onNext={() => setActiveTest('spatial')} />
 			{:else if activeTest === 'spatial'}
-				<SpatialTest onBack={goToMenu} />
+				<SpatialTest onNext={() => setActiveTest('results')} />
 			{:else if activeTest === 'results'}
 				<ResultsView onBack={goToMenu} onStartTest={(test) => setActiveTest(test as ActiveView)} />
 			{:else}
 				<div class="text-center py-12">
-					<h1 class="text-3xl font-bold text-gray-800 mb-4">{$t('home.welcome')}</h1>
-					<p class="text-gray-600">{$t('home.selectTest')}</p>
+					<h1 class="text-3xl font-bold text-gray-800 mb-6">{$t('home.welcome')}</h1>
+					<Button onclick={() => setActiveTest('reasoning')}>{$t('resultsPage.startTest')}</Button>
 				</div>
 			{/if}
 		{/key}

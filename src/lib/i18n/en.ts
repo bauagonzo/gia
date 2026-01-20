@@ -14,6 +14,7 @@ export default {
 	common: {
 		tryAgain: 'Try Again',
 		backToMenu: 'Back to Menu',
+		nextTest: 'Next Test',
 		results: 'Results',
 		correctAnswers: 'Correct Answers',
 		totalAttempted: 'Total Attempted',

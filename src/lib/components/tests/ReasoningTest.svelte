@@ -7,10 +7,10 @@
 	import { TEST_DURATIONS } from '$lib/config';
 
 	interface Props {
-		onBack: () => void;
+		onNext: () => void;
 	}
 
-	let { onBack }: Props = $props();
+	let { onNext }: Props = $props();
 
 	const DURATION = TEST_DURATIONS.reasoning;
 
@@ -98,7 +98,7 @@
 		</div>
 		<div class="mt-6 mb-2 flex gap-4 justify-center">
 			<Button onclick={retry}>{$t('common.tryAgain')}</Button>
-			<Button onclick={onBack} color="alternative">{$t('common.backToMenu')}</Button>
+			<Button onclick={onNext}>{$t('common.nextTest')}</Button>
 		</div>
 	</Card>
 {:else}
