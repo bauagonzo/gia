@@ -2,10 +2,11 @@ import { writable, derived } from 'svelte/store';
 import { browser } from '$app/environment';
 import en from './en';
 import fr from './fr';
+import sp from './sp';
 
-export type Locale = 'en' | 'fr';
+export type Locale = 'en' | 'fr' | 'sp';
 
-const translations: Record<Locale, typeof en> = { en, fr };
+const translations: Record<Locale, typeof en> = { en, fr, sp };
 
 function getInitialLocale(): Locale {
 	if (browser) {
