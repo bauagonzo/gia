@@ -4,7 +4,7 @@ export default {
 		giaLink: 'https://www.thomas.co/assessments/general-intelligence-assessment-gia',
 		giaLabel: 'GIA',
 		description: 'The GIA consists of 5 timed tests that measure different cognitive abilities:',
-		encouragement: 'The GIA is challenging, but with regular practice your scores can improve significantly. Take your time to familiarise yourself with each test type.',
+		encouragement: 'The GIA is challenging, but regular practice can significantly improve your scores. For best results, it’s recommended to take the assessment in your native language, as this can meaningfully affect performance.',
 		minute: 'min'
 	},
 	nav: {

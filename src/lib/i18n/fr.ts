@@ -4,7 +4,7 @@ export default {
 		giaLink: 'https://www.thomas.co/fr/gia',
 		giaLabel: 'GIA',
 		description: 'Le GIA comprend 5 tests chronométrés qui mesurent différentes capacités cognitives :',
-		encouragement: 'Le GIA est exigeant, mais avec une pratique régulière, vos scores peuvent s\'améliorer considérablement. Prenez le temps de vous familiariser avec chaque type de test.',
+		encouragement: 'Le GIA est exigeant, mais avec une pratique régulière, vos scores peuvent s\'améliorer considérablement. Pour des résultats optimaux, il est recommandé de passer l\'évaluation dans votre langue maternelle, car cela peut avoir un impact notable sur les performances.',
 		minute: 'min'
 	},
 	nav: {

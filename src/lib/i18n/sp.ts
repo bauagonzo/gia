@@ -4,7 +4,7 @@ export default {
 		giaLink: 'https://www.thomas.co/es/assessments/evaluacion-de-inteligencia-general-gia',
 		giaLabel: 'GIA',
 		description: 'El GIA consta de 5 pruebas cronometradas que miden diferentes capacidades cognitivas:',
-		encouragement: 'El GIA es exigente, pero con práctica regular tus puntuaciones pueden mejorar significativamente. Tómate tu tiempo para familiarizarte con cada tipo de prueba.',
+		encouragement: 'El GIA es exigente, pero la práctica regular puede mejorar significativamente tus resultados. Para obtener los mejores resultados, se recomienda realizar la evaluación en tu idioma nativo, ya que esto puede influir de manera significativa en el rendimiento.',
 		minute: 'min'
 	},
 	nav: {
