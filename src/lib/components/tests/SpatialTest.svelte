@@ -74,7 +74,7 @@
 </script>
 
 <div class="flex justify-between items-center mb-6">
-	<h1 class="text-2xl font-bold text-gray-800">{$t('spatial.title')}</h1>
+	<h1 class="text-2xl font-bold text-gray-800 dark:text-white">{$t('spatial.title')}</h1>
 	{#if !showResults}
 		<Timer duration={DURATION} onExpire={handleTimeExpire} />
 	{/if}
@@ -97,19 +97,19 @@
 {:else}
 	<Card>
 		<div class="text-center space-y-6 min-h-32 pb-4">
-			<p class="text-gray-600 mb-4">{$t('spatial.question')}</p>
+			<p class="text-gray-600 dark:text-gray-300 mb-4">{$t('spatial.question')}</p>
 			<div class="flex justify-center gap-12">
 				{#each currentQuestion.pairs as pair}
-					<div class="flex flex-col items-center gap-4 p-4 border rounded-lg bg-gray-50">
+					<div class="flex flex-col items-center gap-4 p-4 border rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
 						<div
-							class="text-5xl font-bold select-none"
+							class="text-5xl font-bold select-none dark:text-white"
 							style="transform: {getTransform(pair.topRotation, false)};"
 						>
 							{pair.symbol}
 						</div>
-						<div class="border-t border-gray-300 w-16"></div>
+						<div class="border-t border-gray-300 dark:border-gray-500 w-16"></div>
 						<div
-							class="text-5xl font-bold select-none"
+							class="text-5xl font-bold select-none dark:text-white"
 							style="transform: {getTransform(pair.bottomRotation, pair.isMirrored)};"
 						>
 							{pair.symbol}

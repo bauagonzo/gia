@@ -20,7 +20,7 @@
 </script>
 
 <div class="flex justify-between items-center mb-6">
-	<h1 class="text-2xl font-bold text-gray-800">{$t('resultsPage.title')}</h1>
+	<h1 class="text-2xl font-bold text-gray-800 dark:text-white">{$t('resultsPage.title')}</h1>
 	{#if hasAnyResults($results)}
 		<Button color="red" size="sm" onclick={() => results.clear()}>{$t('resultsPage.clearAll')}</Button>
 	{/if}
@@ -55,7 +55,7 @@
 	</div>
 {:else}
 	<div class="text-center py-12">
-		<p class="text-gray-500 mb-6">{$t('resultsPage.noResults')}</p>
+		<p class="text-gray-500 dark:text-gray-400 mb-6">{$t('resultsPage.noResults')}</p>
 		<Button onclick={() => onStartTest('reasoning')}>{$t('resultsPage.startTest')}</Button>
 	</div>
 {/if}

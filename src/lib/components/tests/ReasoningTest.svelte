@@ -81,7 +81,7 @@
 </script>
 
 <div class="flex justify-between items-center mb-6">
-	<h1 class="text-2xl font-bold text-gray-800">{$t('reasoning.title')}</h1>
+	<h1 class="text-2xl font-bold text-gray-800 dark:text-white">{$t('reasoning.title')}</h1>
 	{#if !showResults}
 		<Timer duration={DURATION} onExpire={handleTimeExpire} />
 	{/if}
@@ -108,7 +108,7 @@
 	>
 		<div class="text-center space-y-6 min-h-32 flex flex-col justify-center">
 			{#if showQuestion}
-				<p class="text-lg font-medium text-gray-900">{currentQuestion.question}</p>
+				<p class="text-lg font-medium text-gray-900 dark:text-white">{currentQuestion.question}</p>
 				<div class="flex gap-4 justify-center">
 					<Button
 						size="xl"
@@ -126,7 +126,7 @@
 					</Button>
 				</div>
 			{:else}
-				<p class="text-xl text-gray-700">{currentQuestion.statement}</p>
+				<p class="text-xl text-gray-700 dark:text-gray-200">{currentQuestion.statement}</p>
 				<p class="text-gray-400 text-sm">{$t('common.clickToReveal')}</p>
 			{/if}
 		</div>

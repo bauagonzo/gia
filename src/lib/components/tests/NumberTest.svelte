@@ -63,7 +63,7 @@
 </script>
 
 <div class="flex justify-between items-center mb-6">
-	<h1 class="text-2xl font-bold text-gray-800">{$t('number.title')}</h1>
+	<h1 class="text-2xl font-bold text-gray-800 dark:text-white">{$t('number.title')}</h1>
 	{#if !showResults}
 		<Timer duration={DURATION} onExpire={handleTimeExpire} />
 	{/if}
@@ -86,7 +86,7 @@
 {:else}
 	<Card class="min-w-96">
 		<div class="text-center space-y-6 min-h-32 pb-4">
-			<p class="text-gray-600 mb-4">{$t('number.question')}</p>
+			<p class="text-gray-600 dark:text-gray-300 mb-4">{$t('number.question')}</p>
 			<div class="flex justify-center gap-4">
 				{#each currentQuestion.numbers as num}
 					<Button

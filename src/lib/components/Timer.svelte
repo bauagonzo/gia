@@ -32,6 +32,6 @@
 	});
 </script>
 
-<div class="text-lg font-mono text-gray-700" class:text-red-600={remaining <= 30}>
+<div class="text-lg font-mono text-gray-700 dark:text-gray-300" class:text-red-600={remaining <= 30} class:dark:text-red-400={remaining <= 30}>
 	{formatTime(remaining)}
 </div>
