@@ -20,7 +20,8 @@
 	let languages = [
 		{ value: 'en', name: 'EN' },
 		{ value: 'fr', name: 'FR' },
-		{ value: 'sp', name: 'SP' }
+		{ value: 'sp', name: 'SP' },
+		{ value: 'el', name: 'EL' }
 	];
 
 	function handleLocaleChange(e: Event) {
